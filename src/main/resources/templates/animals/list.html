@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <h1 th:text="${animallist[0]}">Default Text Goes Here</h1>
+<!--        //references animallist at index 0, uses template literal-->
+<!--        //start with th to reference some kind of java data-->
+<!--        //in this case in the form of text-->
+    <h2>Here are the Animals!</h2>
+    <ul th:each="animal : ${animallist}">
+        <li th:text="${animal}"></li>
+<!--        every time you reference java data, use template literal ${}-->
+    </ul>
+
+    <table th:if="${roster.size()}">
+<!--        conditional: if there is something inside the roster, this table element will render-->
+        <tr><th>Animal Name</th><th>Caretaker</th></tr>
+        <tr th:each="item : ${roster}">
+            <td th:text="${item.key}"></td>
+            <td th:text="${item.value}"></td>
+        </tr>
+    </table>
+    <h3 th:unless="${roster.size()}">Nobody here but us chickens!</h3>
+</head>
+<body>
+
+</body>
+</html>
